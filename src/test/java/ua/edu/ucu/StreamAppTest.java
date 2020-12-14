@@ -43,10 +43,4 @@ public class StreamAppTest {
         String result = StreamApp.streamForEach(intStream);
         assertEquals(expResult, result);
     }
-    
-    @Test
-    public void testSmartArrayApp() {
-        StreamApp streamApp = new StreamApp();
-        assertEquals(StreamApp.class, streamApp.getClass());
-    }
 }

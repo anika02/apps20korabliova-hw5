@@ -27,19 +27,19 @@ public class AsIntStream implements IntStream {
     }
 
     @Override
-    public double average() {
+    public Double average() {
         checkEmptyException();
         return (double) sum() / count();
     }
 
     @Override
-    public int max() {
+    public Integer max() {
         checkEmptyException();
         return this.reduce(Integer.MIN_VALUE, Math::max);
     }
 
     @Override
-    public int min() {
+    public Integer min() {
         checkEmptyException();
         return this.reduce(Integer.MAX_VALUE, Math::min);
     }
@@ -51,7 +51,7 @@ public class AsIntStream implements IntStream {
     }
 
     @Override
-    public int sum() {
+    public Integer sum() {
         checkEmptyException();
         return this.reduce(0, (sum, x) -> sum += x);
 
