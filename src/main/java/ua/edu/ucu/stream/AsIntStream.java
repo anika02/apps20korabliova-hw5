@@ -1,6 +1,10 @@
 package ua.edu.ucu.stream;
 
-import ua.edu.ucu.function.*;
+import ua.edu.ucu.function.IntBinaryOperator;
+import ua.edu.ucu.function.IntConsumer;
+import ua.edu.ucu.function.IntPredicate;
+import ua.edu.ucu.function.IntToIntStreamFunction;
+import ua.edu.ucu.function.IntUnaryOperator;
 
 import java.util.ArrayList;
 
@@ -23,19 +27,19 @@ public class AsIntStream implements IntStream {
     }
 
     @Override
-    public Double average() {
+    public double average() {
         checkEmptyException();
         return (double) sum() / count();
     }
 
     @Override
-    public Integer max() {
+    public int max() {
         checkEmptyException();
         return this.reduce(Integer.MIN_VALUE, Math::max);
     }
 
     @Override
-    public Integer min() {
+    public int min() {
         checkEmptyException();
         return this.reduce(Integer.MAX_VALUE, Math::min);
     }
@@ -47,7 +51,7 @@ public class AsIntStream implements IntStream {
     }
 
     @Override
-    public Integer sum() {
+    public int sum() {
         checkEmptyException();
         return this.reduce(0, (sum, x) -> sum += x);
 
@@ -104,8 +108,9 @@ public class AsIntStream implements IntStream {
     @Override
     public int[] toArray() {
         int[] array = new int[values.size()];
-        for (int i = 0; i < values.size(); i++)
+        for (int i = 0; i < values.size(); i++) {
             array[i] = values.get(i);
+        }
         return array;
     }
 
